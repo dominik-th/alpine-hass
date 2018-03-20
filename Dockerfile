@@ -10,7 +10,7 @@ RUN apk add --no-cache libstdc++ && \
 		gnupg \
 		libgcc \
 		linux-headers \
-		make 
+		make
 
 RUN apk --no-cache add python3-dev py-pip py3-netifaces
 
@@ -18,6 +18,10 @@ RUN apk --no-cache add python3-dev py-pip py3-netifaces
 RUN apk --no-cache add libffi-dev openssl-dev
 
 RUN pip3 --no-cache-dir install --upgrade pip
+
+# required for media_player.frontier_silicon
+RUN apk --no-cache add py-lxml
+RUN pip3 --no-cache-dir install afsapi
 
 RUN mkdir /config && \
 	pip3 --no-cache-dir install homeassistant
